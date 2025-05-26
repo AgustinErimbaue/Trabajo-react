@@ -4,11 +4,11 @@ import swal from 'sweetalert';
 import './Reserve.css';  
 
 const Reserve = () => {
-    
     const initialValue = {
         name: "",
         email: "",
         shift: "",
+        hour: "",
     };
   
     const [data, setData] = useState(initialValue);
@@ -20,8 +20,9 @@ const Reserve = () => {
     const validateForm = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         
-        if (!data.name || !data.email || !data.shift) {
+        if (!data.name || !data.email || !data.shift || (data.shift === "hora" && !data.hour)) {
             setMessage("");
+            setBtnDisabled(true);
         } else if (data.name.length < 3) {
             setMessage("Name must be at least 3 characters");
             setBtnDisabled(true);
@@ -30,8 +31,8 @@ const Reserve = () => {
         } else if (!emailRegex.test(data.email)) {
             setMessage("Insert a valid email");
             setBtnDisabled(true);
-        } else if (data.shift.length < 3) {
-            setMessage("Shift must be at least 3 characters");
+        } else if (data.shift === "hora" && !data.hour) {
+            setMessage("Please select an hour");
             setBtnDisabled(true);
         } else {
             setMessage("");
@@ -56,7 +57,7 @@ const Reserve = () => {
         setData(initialValue);
         swal(
             "Reservation successful!",
-            `${data.name}, ${data.email}, ${data.shift}`,
+            `${data.name}, ${data.email}, ${data.shift === "hora" ? `Hora: ${data.hour}` : data.shift}`,
             "success"
         );
         setTimeout(() => {
@@ -67,7 +68,7 @@ const Reserve = () => {
     return (
         <div className="reserve-form-container">
             <h1>Reserve your table</h1>
-            <form className="reserve-form">
+            <form className="reserve-form" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     name="name"
@@ -82,17 +83,32 @@ const Reserve = () => {
                     onChange={handleInputChange}
                     value={data.email}
                 />
-                <input
-                    type="text"
+                <select
                     name="shift"
-                    placeholder="Shift"
-                    onChange={handleInputChange}
                     value={data.shift}
-                />
+                    onChange={handleInputChange}
+                >
+                    <option value="">Selecciona turno</option>
+                    <option value="comida">Turno de comida (13:00 - 16:00)</option>
+                    <option value="cena">Turno de cena (20:00 - 23:00)</option>
+                    <option value="hora">Elegir hora exacta</option>
+                </select>
+                {data.shift === "hora" && (
+                    <input
+                        type="time"
+                        name="hour"
+                        value={data.hour}
+                        onChange={handleInputChange}
+                        min="13:00"
+                        max="23:00"
+                        step="900"
+                        style={{marginTop: 10}}
+                    />
+                )}
+                <button type="submit" disabled={btnDisabled}>
+                    Submit
+                </button>
             </form>
-            <button onClick={handleSubmit} disabled={btnDisabled}>
-                Submit
-            </button>
             <p>{message}</p>
         </div>
     );

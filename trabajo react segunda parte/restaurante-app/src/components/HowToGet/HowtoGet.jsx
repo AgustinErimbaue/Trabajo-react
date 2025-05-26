@@ -1,5 +1,5 @@
 import "./HowToGet.css";
-const HowtoGet = () => {
+const HowToGet = () => {
   return (
     <div className="howtoget-container" style={{maxWidth: 700, margin: "40px auto", padding: 32, background: "rgba(34,34,34,0.95)", borderRadius: 18, color: "#fff8dc", fontFamily: "'Lato', sans-serif"}}>
       <h1 style={{fontFamily: "'Playfair Display', serif", color: "#ffd700", fontSize: 32, marginBottom: 16}}>¿Cómo llegar?</h1>
@@ -26,4 +26,4 @@ const HowtoGet = () => {
   )
 }
 
-export default HowtoGet
+export default HowToGet

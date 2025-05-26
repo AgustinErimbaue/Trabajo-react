@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Header from "./components/Navbar/Header";
 import Reserve from "./components/Reserve/Reserve";
-import HowtoGet from "./components/HowToGet/HowtoGet";
+import HowToGet from "./components/HowToGet/HowtoGet";
 
 const dishes = [
   {
@@ -63,7 +63,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home menu={dishes} />}/>
         <Route path="/reserve" element={<Reserve/>}/>
-        <Route path="/map" element ={<HowtoGet/>}/>
+        <Route path="/map" element ={<HowToGet/>}/>
       </Routes>
     </BrowserRouter>
 
