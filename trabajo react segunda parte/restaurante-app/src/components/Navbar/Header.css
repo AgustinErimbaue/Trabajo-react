@@ -1,18 +1,23 @@
-/* Estilos generales para la navbar */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
 .Navbar {
-    background-color: #333;
-    padding: 10px 20px;
+    background: linear-gradient(90deg, #232526 0%, #414345 100%);
+    padding: 18px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 24px rgba(191, 161, 74, 0.10);
+    border-bottom: 2px solid #bfa14a;
   }
   
   .title {
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
+    color: #ffd700;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
     margin: 0;
+    text-shadow: 0 2px 8px rgba(191, 161, 74, 0.15);
   }
   
   .Navbar ul {
@@ -23,17 +28,45 @@
   }
   
   .Navbar li {
-    margin-left: 20px;
+    margin-left: 32px;
   }
   
   .Navbar a {
-    color: #fff;
+    color: #fff8dc;
     text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease;
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 6px 18px;
+    border-radius: 18px;
+    transition: 
+      color 0.2s,
+      background 0.2s,
+      box-shadow 0.2s;
   }
   
-  .Navbar a:hover {
-    color: #4CAF50;
+  .Navbar a:hover, .Navbar a.active {
+    color: #232526;
+    background: linear-gradient(90deg, #ffd700 0%, #bfa14a 100%);
+    box-shadow: 0 2px 12px rgba(191, 161, 74, 0.18);
   }
   
+  @media (max-width: 600px) {
+    .Navbar {
+      flex-direction: column;
+      padding: 12px 8px;
+    }
+    .Navbar ul {
+      flex-direction: column;
+      width: 100%;
+      align-items: flex-start;
+    }
+    .Navbar li {
+      margin: 10px 0 0 0;
+    }
+    .title {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+  }

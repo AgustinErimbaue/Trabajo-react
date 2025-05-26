@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Reserve.css';  // Ensure you import your CSS file
+import swal from 'sweetalert';
+import './Reserve.css';  
 
 const Reserve = () => {
     
