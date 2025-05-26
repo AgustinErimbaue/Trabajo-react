@@ -20,8 +20,11 @@ const Reserve = () => {
     const validateForm = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         
-        if (!data.name || !data.email || !data.shift || (data.shift === "hora" && !data.hour)) {
+        if (!data.name || !data.email || !data.shift) {
             setMessage("");
+            setBtnDisabled(true);
+        } else if (data.shift === "hora" && !data.hour) {
+            setMessage("Please select an hour");
             setBtnDisabled(true);
         } else if (data.name.length < 3) {
             setMessage("Name must be at least 3 characters");
@@ -30,9 +33,6 @@ const Reserve = () => {
             setBtnDisabled(true);
         } else if (!emailRegex.test(data.email)) {
             setMessage("Insert a valid email");
-            setBtnDisabled(true);
-        } else if (data.shift === "hora" && !data.hour) {
-            setMessage("Please select an hour");
             setBtnDisabled(true);
         } else {
             setMessage("");
